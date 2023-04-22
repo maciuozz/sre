@@ -3,17 +3,17 @@ PYTHON 	= $(VENV)/bin/python3
 PIP		= $(VENV)/bin/pip
 
 # Variables used to configure
-IMAGE_REGISTRY_DOCKERHUB 	?= xoanmallon
-IMAGE_REGISTRY_GHCR			?= ghcr.io
-IMAGE_REPO					= keepcodingclouddevops6
-IMAGE_NAME					?= kc-7-liberando-productos-practica-final
-VERSION						?= develop
+IMAGE_REGISTRY_DOCKERHUB 	?= maciuozz
+IMAGE_REGISTRY_GHCR		?= ghcr.io
+IMAGE_REPO			=  keepcodingclouddevops7
+IMAGE_NAME			?= KC-7-SRE-practica-final
+VERSION				?= develop
 
 # Variables used to configure docker images registries to build and push
 IMAGE			= $(IMAGE_REGISTRY)/$(IMAGE_REPO)/$(IMAGE_NAME):$(VERSION)
-IMAGE_LATEST	= $(IMAGE_REGISTRY)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
+IMAGE_LATEST	        = $(IMAGE_REGISTRY)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
 IMAGE_GHCR		= $(IMAGE_REGISTRY_GHCR)/$(IMAGE_REPO)/$(IMAGE_NAME):$(VERSION)
-IMAGE_GHCR_LATEST = $(IMAGE_REGISTRY_GHCR)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
+IMAGE_GHCR_LATEST       = $(IMAGE_REGISTRY_GHCR)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
 
 .PHONY: run
 run: $(VENV)/bin/activate
