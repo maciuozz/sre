@@ -12,6 +12,8 @@ VERSION						?= develop
 # Variables used to configure docker images registries to build and push
 IMAGE			= $(IMAGE_REGISTRY)/$(IMAGE_REPO)/$(IMAGE_NAME):$(VERSION)
 IMAGE_LATEST	= $(IMAGE_REGISTRY)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
+IMAGE_GHCR		= $(IMAGE_REGISTRY_GHCR)/$(IMAGE_REPO)/$(IMAGE_NAME):$(VERSION)
+IMAGE_GHCR_LATEST = $(IMAGE_REGISTRY_GHCR)/$(IMAGE_REPO)/$(IMAGE_NAME):latest
 
 .PHONY: run
 run: $(VENV)/bin/activate
