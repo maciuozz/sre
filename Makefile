@@ -35,12 +35,10 @@ $(VENV)/bin/activate: requirements.txt
 .PHONY: docker-build
 docker-build: ## Build image
     
-	@echo "Building image $(IMAGE) with version $(VERSION)..."
-	@echo "IMAGE_REGISTRY_DOCKERHUB: $(IMAGE_REGISTRY_DOCKERHUB)"
-	@echo "IMAGE_REGISTRY_GHCR: $(IMAGE_REGISTRY_GHCR)"
-	@echo "IMAGE_REPO: $(IMAGE_REPO)"
-	@echo "IMAGE_NAME: $(IMAGE_NAME)"
-	@echo "VERSION: $(VERSION)"
+	@echo $(IMAGE)..."
+	@echo $(IMAGE_LATEST)..."
+	@echo $(IMAGE_GHCR)..."
+	@echo $(IMAGE_GHRC_LATEST)..."
 	docker build -t $(IMAGE) -t $(IMAGE_LATEST) -t $(IMAGE_GHCR) -t $(IMAGE_GHRC_LATEST) .
 
 .PHONY: publish
