@@ -1,5 +1,5 @@
 VENV 	?= venv
-PYTHON 	= $(VENV)/bin/python3
+PYTHON 	= $(VENV)/bin/python3.9
 PIP		= $(VENV)/bin/pip
 
 # Variables used to configure
