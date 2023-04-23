@@ -29,7 +29,7 @@ unit-test-coverage: $(VENV)/bin/activate
 
 .PHONY: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
-	python3.9 -m venv $(VENV)
+	python3 -m venv $(VENV)
 	$(PIP) install -r requirements.txt
 
 .PHONY: docker-build
