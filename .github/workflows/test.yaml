@@ -28,5 +28,7 @@ jobs:
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
 
-      - name: Run unit-tests
-        run: make unit-test unit-test-coverage
+      - name: Run unit tests
+        run: |
+          make unit-test
+          make unit-test-coverage
