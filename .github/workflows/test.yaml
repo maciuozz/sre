@@ -30,6 +30,9 @@ jobs:
         
       - name: Install httpx
         run: pip3 install httpx
+        
+      - name: Check Python versions
+        run: ls /opt/hostedtoolcache/Python
 
       - name: Run unit tests
         run: |
