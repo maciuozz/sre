@@ -6,7 +6,7 @@ PIP		= $(VENV)/bin/pip
 IMAGE_REGISTRY_DOCKERHUB 	?= maciuozz
 IMAGE_REGISTRY_GHCR		?= ghcr.io
 IMAGE_REPO			=  maciuozz
-IMAGE_NAME			?= SRE
+IMAGE_NAME			?= sre
 VERSION				?= develop
 
 # Variables used to configure docker images registries to build and push
