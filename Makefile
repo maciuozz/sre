@@ -5,8 +5,8 @@ PIP		= $(VENV)/bin/pip
 # Variables used to configure
 IMAGE_REGISTRY_DOCKERHUB 	?= maciuozz
 IMAGE_REGISTRY_GHCR		?= ghcr.io
-IMAGE_REPO			=  keepcodingclouddevops7
-IMAGE_NAME			?= kc7-sre-practica-final
+IMAGE_REPO			=  maciuozz
+IMAGE_NAME			?= SRE
 VERSION				?= develop
 
 # Variables used to configure docker images registries to build and push
