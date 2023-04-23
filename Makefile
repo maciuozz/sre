@@ -38,12 +38,12 @@ docker-build: ## Build image
 	@echo "$(IMAGE)..."
 	@echo "$(IMAGE_LATEST)..."
 	@echo "$(IMAGE_GHCR)..."
-	@echo "$(IMAGE_GHRC_LATEST)..."
+	@echo "$(IMAGE_GHCR_LATEST)..."
 	docker build -t $(IMAGE) -t $(IMAGE_LATEST) -t $(IMAGE_GHCR) -t $(IMAGE_GHCR_LATEST) .
 
 .PHONY: publish
 publish: docker-build ## Publish image
-	docker push $(IMAGE)
+	docker push $(IMAGE) --debug
 	docker push $(IMAGE_LATEST)
 	docker push $(IMAGE_GHCR)
 	docker push $(IMAGE_GHRC_LATEST)
