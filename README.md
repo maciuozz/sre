@@ -15,6 +15,16 @@ Para desplegar Prometheus creamos un cluster de Kubernetes que utilice la versi�
 
     minikube start --kubernetes-version='v1.21.1' --memory=4096 --addons="metrics-server -p monitoring-demo
 
+Añadir el repositorio de helm prometheus-community para poder desplegar el chart kube-prometheus-stack:
+
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo update
+
+Desplegar el chart kube-prometheus-stack del repositorio de helm añadido en el paso anterior con los valores configurados en el archivo kube-prometheus-stack/values.yaml en el namespace monitoring:
+
+    helm -n monitoring upgrade --install prometheus prometheus-community/kube-prometheus-stack -f kube-prometheus-stack/values.yaml --create-namespace --
+    wait --version 34.1.1
+    
 ## Objetivo
 
 El objetivo es mejorar un proyecto creado previamente para ponerlo en producción, a través de la adicción de una serie de mejoras.
