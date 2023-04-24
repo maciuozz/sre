@@ -1,4 +1,12 @@
-# keepcoding-devops-liberando-productos-practica-final
+# Practica SRE Paolo Scotto Di Mase
+
+Generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:  
+
+<img width="1187" alt="Screenshot 2023-04-24 at 02 12 21" src="https://user-images.githubusercontent.com/118285718/233874655-ca1eb09a-7908-43d2-a032-f1ba8db3fbe3.png">
+
+Dentro del repositorio generamos un secret ***GHCR_PAT*** en ***Settings*** --> ***Secrets and variables*** --> ***Actions*** con el valor del PAT:  
+
+<img width="1224" alt="Screenshot 2023-04-24 at 02 24 56" src="https://user-images.githubusercontent.com/118285718/233875331-b1faa951-b2cb-40e8-a741-0ac7ccf365ff.png">
 
 ## Objetivo
 
