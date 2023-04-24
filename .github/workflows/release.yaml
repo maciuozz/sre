@@ -9,12 +9,11 @@ on:
       - "Test"
     branches: [ main ]
     types:
-      - completed
+      - success
     
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && needs.test.outputs.status == 'success') 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
