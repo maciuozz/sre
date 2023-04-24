@@ -14,7 +14,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && needs.test.outputs.status == 'success') || (github.event_name == 'workflow_run' && github.event.workflow_run.event == 'completed' && github.event.workflow_run.name == 'Test' && github.event.workflow_run.conclusion == 'success') || (github.event_name == 'pull_request')
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && needs.test.outputs.status == 'success') 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
