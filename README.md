@@ -1,6 +1,6 @@
 # Practica SRE Paolo Scotto Di Mase
 Se han agregado 2 endpoints, 2 contadores y 2 pruebas unitarias que están señalizados de manera visible en el codigo.
-Se ha creado una pipeline mediante Github Actions que hace uso de 2 archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas. La fase de release se activa cuando se verifica un push de tag que comienza con la letra "v". Por otro lado, la fase de test se activa con push de código o pull requests (PR). He usado un repositorio privado en mi cuenta personal de GitHub en vez de usar la organización ***keepcodingclouddevops7*** como vimos durante las clases.
+Se ha creado una pipeline mediante GitHub Actions que hace uso de 2 archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas. La fase de release se activa cuando se verifica un push de tag que comienza con la letra "v". Por otro lado, la fase de test se activa con push de código o pull requests (PR). He usado un repositorio privado en mi cuenta personal de GitHub en vez de usar la organización ***keepcodingclouddevops7*** como vimos durante las clases.
 El fichero ***release.yaml*** usa 3 ***repository secret***: ***GHCR_PAT***, ***DOCKERHUB_TOKEN*** y ***DOCKERHUB_USERNAME***.
 Para definir ***GHCR_PAT*** generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:  
 
