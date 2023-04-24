@@ -9,7 +9,8 @@ on:
       - "Test"
     branches: [ main ]
     types:
-      - success
+      - completed
+    result: success
     
 jobs:
   release:
