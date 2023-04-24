@@ -11,6 +11,11 @@ Dentro del repositorio generamos un secret, ***GHCR_PAT***, en ***Settings*** --
 
 <img width="1224" alt="Screenshot 2023-04-24 at 02 24 56" src="https://user-images.githubusercontent.com/118285718/233875331-b1faa951-b2cb-40e8-a741-0ac7ccf365ff.png">
 
+Para desplegar prometheus:
+         minikube start --kubernetes-version='v1.21.1' \
+             --memory=4096 \
+             --addons="metrics-server,default-storageclass,storage-provisioner" \
+             -p monitoring-demo
 
 ## Objetivo
 
