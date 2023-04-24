@@ -28,7 +28,7 @@ Para ver los pod en el namespace monitoring utilizado para desplegar el stack de
 
     kubectl -n monitoring get po -w
 
-Desplegamos nuestra aplicación que utiliza FastAPI para levantar un servidor en el puerto 8081. Creamos una imagen Docker con el código necesario 
+Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081. Creamos una imagen Docker con el código necesario 
 para arrancar el servidor:
 
     docker build -t simple-server:0.0.1 .
@@ -41,6 +41,20 @@ Obtener los logs del contenedor creado en el paso anterior:
 
     docker logs -f simple-server
 
+La ejecución del comando anterior debería mostrar algo como lo siguiente:
+
+    [2023-04-25 01:17:22 +0000] [1] [INFO] Running on http://0.0.0.0:8081
+
+Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
+
+    kubectl -n monitoring port-forward svc/prometheus-grafana 3000:http-web
+
+Abrir otra pestaña en la terminal y realizar un port-forward del servicio de Prometheus al puerto 9090 de la máquina:
+
+    kubectl -n monitoring port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090
+
+Acceder a la dirección http://localhost:3000 en el navegador para acceder a Grafana, las credenciales por defecto son admin para el usuario y prom-operator para la contraseña. Acceder a la dirección http://localhost:9090 para acceder al Prometheus, por defecto no se necesita autenticación.
+Para acceder a nuestra aplicación usamos la dirección http://localhost:8081.
 
 ## Objetivo
 
