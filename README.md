@@ -43,7 +43,7 @@ Obtener los logs del contenedor creado en el paso anterior:
 
 La ejecución del comando anterior debería mostrar algo como lo siguiente:
 
-    [2023-04-25 01:17:22 +0000] [1] [INFO] Running on http://0.0.0.0:8081
+    [2023-04-24 23:33:25 +0000] [1] [INFO] Running on http://0.0.0.0:8081 (CTRL + C to quit)
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
