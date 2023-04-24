@@ -13,10 +13,10 @@ Dentro del repositorio generamos un secret, ***GHCR_PAT***, en ***Settings*** --
 
 Para desplegar Prometheus a través de Kubernetes mediante Minikube:
 
-   minikube start --kubernetes-version='v1.21.1' \
-       --memory=4096 \
-       --addons="metrics-server,default-storageclass,storage-provisioner" \
-       -p monitoring-demo
+    minikube start --kubernetes-version='v1.21.1' \
+        --memory=4096 \
+        --addons="metrics-server,default-storageclass,storage-provisioner" \
+        -p monitoring-demo
 
 ## Objetivo
 
