@@ -1,5 +1,5 @@
 # Practica SRE Paolo Scotto Di Mase
-
+Se ha creado una pipeline mediante Github Actions que hace uso de dos archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas.
 El fichero ***release.yaml*** usa 3 ***repository secret***: ***GHCR_PAT***, ***DOCKERHUB_TOKEN*** y ***DOCKERHUB_USERNAME***.
 Para definir ***GHCR_PAT*** generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:  
 
