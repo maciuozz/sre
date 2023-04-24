@@ -11,7 +11,7 @@ Dentro del repositorio generamos un secret, ***GHCR_PAT***, en ***Settings*** --
 
 <img width="1224" alt="Screenshot 2023-04-24 at 02 24 56" src="https://user-images.githubusercontent.com/118285718/233875331-b1faa951-b2cb-40e8-a741-0ac7ccf365ff.png">
 
-Para desplegar Prometheus a través de Kubernetes mediante Minikube:
+Para desplegar Prometheus creamos un cluster de Kubernetes que utilice la versión v1.21.1 utilizando minikube para ello a través de un nuevo perfil llamado monitoring-demo:
 
     minikube start --kubernetes-version='v1.21.1' \
         --memory=4096 \
