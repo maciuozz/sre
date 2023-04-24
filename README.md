@@ -24,6 +24,24 @@ Desplegar el chart kube-prometheus-stack del repositorio de helm añadido en el 
 
     helm -n monitoring upgrade --install prometheus prometheus-community/kube-prometheus-stack -f kube-prometheus-stack/values.yaml --create-namespace wait --version 34.1.1
     
+Para ver los pod en el namespace monitoring utilizado para desplegar el stack de prometheus: 
+
+    kubectl -n monitoring get po -w
+
+Desplegamos nuestra aplicación que utiliza FastAPI para levantar un servidor en el puerto 8081. Creamos una imagen Docker con el código necesario 
+para arrancar el servidor:
+
+    docker build -t simple-server:0.0.1 .
+
+Arrancamos la imagen construida en el paso anterior mapeando los puertos utilizados por el servidor de FastAPI y el cliente de prometheus:
+
+    docker run -d -p 8000:8000 -p 8081:8081 --name simple-server simple-server:0.0.1
+
+Obtener los logs del contenedor creado en el paso anterior:
+
+    docker logs -f simple-server
+
+
 ## Objetivo
 
 El objetivo es mejorar un proyecto creado previamente para ponerlo en producción, a través de la adicción de una serie de mejoras.
