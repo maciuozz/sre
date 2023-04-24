@@ -13,6 +13,10 @@ app = FastAPI()
 REQUESTS = Counter('server_requests_total', 'Total number of requests to this webserver')
 HEALTHCHECK_REQUESTS = Counter('healthcheck_requests_total', 'Total number of requests to healthcheck')
 MAIN_ENDPOINT_REQUESTS = Counter('main_requests_total', 'Total number of requests to main endpoint')
+
+############################################# ADDITIONAL COUNTERS ###################################################################
+#We create 2 counters for the 2 additional endpoints. The counters are used to collect metrics on the total number of requests received
+#by each of these endpoints.
 BYE_ENDPOINT_REQUESTS = Counter('bye_requests_total', 'Total number of requests to bye endpoint')
 JOKE_ENDPOINT_REQUESTS = Counter('joke_requests_total', 'Total number of requests to joke endpoint')
 
@@ -35,39 +39,38 @@ class SimpleServer:
     @app.get("/health")
     async def health_check():
         """Implement health check endpoint"""
-        # Increment counter used for register the total number of calls in the webserver
+        #Increase the counter used to record the overall number of requests made to the webserver.
         REQUESTS.inc()
-        # Increment counter used for register the requests to healtcheck endpoint
+        #Increase the counter used to record the requests made to the health check endpoint.
         HEALTHCHECK_REQUESTS.inc()
         return {"health": "ok"}
 
     @app.get("/")
     async def read_main():
         """Implement main endpoint"""
-        # Increment counter used for register the total number of calls in the webserver
         REQUESTS.inc()
-        # Increment counter used for register the total number of calls in the main endpoint
         MAIN_ENDPOINT_REQUESTS.inc()
-        return {"msg": "Hello World"}
-    
+        return {"msg": "Hello World"} 
+
+################################################## ADDITIONAL ENDPOINTS ################################################################
+
+#Endpoint that returns the message "Bye Bye".
     @app.get("/bye")
     async def say_bye():
         """Implement bye endpoint"""
-        # Increment counter used to register the total number of calls in the webserver
         REQUESTS.inc()
-        # Increment counter used to register the total number of calls in the bye endpoint
         BYE_ENDPOINT_REQUESTS.inc()
         return {"msg": "Bye Bye"}
 
+#Endpoint that uses the 'requests' library to get a random joke from an external API. If the request to get the joke is unsuccessful, the
+#function returns an error message. If it is successful, it returns the joke in JSON format.
     @app.get("/joke")
     async def tell_joke():
         """Tell a joke"""
-        # Increment counter used to register the total number of calls in the webserver
         REQUESTS.inc()
-        # Increment counter used to register the total number of calls in the joke endpoint
         JOKE_ENDPOINT_REQUESTS.inc()
 
-        # Use requests library to get a random joke from an API
+        #Use requests library to get a random joke from an API.
         url = "https://official-joke-api.appspot.com/random_joke"
         response = requests.get(url)
         if response.status_code != 200:
