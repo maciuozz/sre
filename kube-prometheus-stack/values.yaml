@@ -79,14 +79,21 @@ defaultRules:
     nodeExporterRecording: true
     prometheus: true
     prometheusOperator: true
-    - alert: HighCPUUsage
-      expr: (sum(rate(container_cpu_usage_seconds_total{container_name!="POD", container_name!=""}[2m])) by (namespace, pod, container) / sum(container_spec_cpu_quota{container_name!="POD", container_name!=""}) by (namespace, pod, container)) * 100 > 90
-      for: 1m
-      labels:
-        severity: critical
-      annotations:
-        summary: "High CPU usage in container"
-        description: "CPU usage of container {{ $labels.container }} in pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is {{ $value }}%."
+
+additionalPrometheusRules:
+  - name: custom.rules
+    groups:
+      - name: high-cpu-usage
+        rules:
+          - alert: HighCPUUsage
+            expr: (sum(rate(container_cpu_usage_seconds_total{container_name!="POD", container_name!=""}[2m])) by (namespace, pod, container) / sum(container_spec_cpu_quota{container_name!="POD", container_name!=""}) by (namespace, pod, container)) * 100 > 90
+            for: 1m
+            labels:
+              severity: critical
+            annotations:
+              summary: "High CPU usage in container"
+              description: "CPU usage of container {{ $labels.container }} in pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is {{ $value }}%."
+
 
 ## Configuration for alertmanager
 alertmanager:
