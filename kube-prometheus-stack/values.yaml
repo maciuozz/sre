@@ -80,21 +80,6 @@ defaultRules:
     prometheus: true
     prometheusOperator: true
 
-additionalPrometheusRules:
-  - name: custom.rules
-    groups:
-      - name: high-cpu-usage
-        rules:
-          - alert: HighCPUUsage
-            expr: (sum(rate(container_cpu_usage_seconds_total{container_name!="POD", container_name!=""}[2m])) by (namespace, pod, container) / sum(container_spec_cpu_quota{container_name!="POD", container_name!=""}) by (namespace, pod, container)) * 100 > 90
-            for: 1m
-            labels:
-              severity: critical
-            annotations:
-              summary: "High CPU usage in container"
-              description: "CPU usage of container {{ $labels.container }} in pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is {{ $value }}%."
-
-
 ## Configuration for alertmanager
 alertmanager:
   config:
@@ -123,7 +108,7 @@ alertmanager:
       slack_configs:
       - api_url: 'https://hooks.slack.com/services/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' # <--- AÑADIR EN ESTA LÍNEA EL WEBHOOK CREADO
         send_resolved: true
-        channel: '#keepcoding-devops-7' # <--- AÑADIR EN ESTA LÍNEA EL CANAL
+        channel: '#paoloscotto-prometheus-alarms' # <--- AÑADIR EN ESTA LÍNEA EL CANAL
         title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] Monitoring Event Notification'
         text: |-
           {{ range .Alerts }}
@@ -144,22 +129,14 @@ additionalPrometheusRulesMap:
     groups:
       - name: ruleset_1
         rules:
-          - alert: MongoDBDown
-            expr: mongodb_up == 0
-            for: 0m
-            labels:
-              severity: critical
-            annotations:
-              summary: MongoDB Down (instance {{ $labels.instance }})
-              description: "MongoDB instance is down"
-
           - alert: fastApiConsumingMoreThanRequest
-            expr: avg(container_memory_usage_bytes{container="fast-api-webapp"}) by (pod) > avg(kube_pod_container_resource_requests{resource="memory",container="fast-api-webapp"}) by (pod)
+            #expr: avg(container_memory_usage_bytes{container="fast-api-webapp"}) by (pod) > avg(kube_pod_container_resource_requests{resource="memory",container="fast-api-webapp"}) by (pod)
+            expr: avg(rate(container_cpu_usage_seconds_total{container="simple-server"}[2m])) by (pod) > avg(kube_pod_container_resource_requests{resource="cpu", container="simple-server"}) by (pod)
             for: 0m
             labels:
               severity: critical
-              alertname: "fast-api-webapp container is consuming more than requested"
+              alertname: "CPU usage exceeded limit for simple-server container"
             annotations:
-              summary: Pod {{ $labels.pod }} consuming more than requested
-              description: "Pod more less than request"
-              message: Pod {{ $labels.pod }} is consuming more than requested
+              summary: "CPU usage exceeded limit for simple-server container"
+              description: "The 'simple-server' container is using more CPU than the configured limit of {{ $value }}."
+              message: "The 'simple-server' container in pod {{ $labels.pod }} is using {{ printf \"%0.2f\" $value }}% CPU, which exceeds the configured limit of {{ $value }}%."
