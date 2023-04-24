@@ -35,3 +35,9 @@ jobs:
         run: |
           make unit-test
           make unit-test-coverage
+      
+      # Set an output variable with the result of the tests
+      - name: Set test status
+        if: always()
+        id: test-status
+        run: echo "::set-output name=status::${{ job.status }}"
