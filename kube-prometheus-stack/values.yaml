@@ -106,7 +106,7 @@ alertmanager:
     - name: 'null'
     - name: 'slack'
       slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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' # <--- AÑADIR EN ESTA LÍNEA EL WEBHOOK CREADO
+      - api_url: 'https://hooks.slack.com/services/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' # <--- AÑADIR EN ESTA LÍNEA EL WEBHOOK CREADO
         send_resolved: true
         channel: '#paoloscotto-prometheus-alarms' # <--- AÑADIR EN ESTA LÍNEA EL CANAL
         title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] Monitoring Event Notification'
@@ -129,8 +129,7 @@ additionalPrometheusRulesMap:
     groups:
       - name: ruleset_1
         rules:
-          - alert: fastApiConsumingMoreThanRequest
-            #expr: avg(container_memory_usage_bytes{container="fast-api-webapp"}) by (pod) > avg(kube_pod_container_resource_requests{resource="memory",container="fast-api-webapp"}) by (pod)
+          - alert: simpleServerCPUUsageHigh
             expr: avg(rate(container_cpu_usage_seconds_total{container="simple-server"}[2m])) by (pod) > avg(kube_pod_container_resource_requests{resource="cpu", container="simple-server"}) by (pod)
             for: 0m
             labels:
