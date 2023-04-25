@@ -2,7 +2,7 @@
 Se han agregado 2 endpoints, 2 contadores y 2 pruebas unitarias que están señalizados de manera visible en el codigo.
 Observamos la ejecución de los 4 tests con el informe de cobertura de código:
 
-    venv) 21:33 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ pytest --cov
+    (venv) 21:33 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ pytest --cov
     =============================================================== test session starts ================================================================
     platform darwin -- Python 3.9.6, pytest-7.1.1, pluggy-1.0.0 -- /Users/paoloscotto/Desktop/SRE/venv/bin/python3
     cachedir: .pytest_cache
