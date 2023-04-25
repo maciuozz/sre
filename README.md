@@ -77,7 +77,7 @@ Como que hemos configurado prometheus para que nos envíe notificaciones a Slack
 
 Aqui podemos observar el escalado/desescalado horizontal: 
 
-   20:37 @/Users/paoloscotto ~ $ k get pod -n monitoring -w | grep simple
+    20:37 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ k get pod -n monitoring -w | grep simple
     my-release-simple-server-7f89c4969b-ft57s                1/1     Running   0          13m
     my-release-simple-server-7f89c4969b-htrf2                1/1     Running   0          13m
     my-release-simple-server-7f89c4969b-ndnrv                1/1     Running   0          15m
