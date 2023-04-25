@@ -46,9 +46,9 @@ Deberiamos obtener este output:
       echo "Visit http://127.0.0.1:8081 to use your application"
       kubectl --namespace monitoring port-forward $POD_NAME 8081:$CONTAINER_PORT
       
-Arrancamos la imagen construida en el paso anterior mapeando los puertos utilizados por el servidor de FastAPI y el cliente de prometheus:
+Realizamos una prueba de estress utilizando Vegeta. Podemos ejecutar este comando repetidas veces (el endpoint se puede cambiar: "/health", "/bye", "/joke"):
 
-    docker run -d -p 8000:8000 -p 8081:8081 --name simple-server simple-server:0.0.1
+    echo "GET http://localhost:8081" | vegeta attack -rate=500 -duration=60s | vegeta report
 
 Obtener los logs del contenedor creado en el paso anterior:
 
