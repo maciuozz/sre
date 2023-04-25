@@ -57,6 +57,20 @@ Realizamos una prueba de estrés utilizando [Vegeta](https://github.com/tsenart/
 
     echo "GET http://localhost:8081" | vegeta attack -rate=500 -duration=60s | vegeta report
 
+El output del comando anterior debería ser similar a:
+
+    16:37 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ echo "GET http://localhost:8081" | vegeta attack -rate=500 -duration=60s | vegeta report
+    Requests      [total, rate, throughput]         30000, 500.02, 105.72
+    Duration      [total, attack, wait]             1m5s, 59.998s, 4.91s
+    Latencies     [min, mean, 50, 90, 95, 99, max]  29.164µs, 495.362ms, 99.3µs, 2.087s, 2.579s, 3.742s, 7.405s
+    Bytes In      [total, mean]                     144102, 4.80
+    Bytes Out     [total, mean]                     0, 0.00
+    Success       [ratio]                           22.87%
+    Status Codes  [code:count]                      0:23138  200:6862
+    Error Set:
+    Get "http://localhost:8081": dial tcp: lookup localhost: no such host
+    Get "http://localhost:8081": dial tcp 0.0.0.0:0->[::1]:8081: socket: too many open files
+    
 Como que hemos configurado prometheus para que nos envíe notificaciones a Slack si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos observar:
 
 <img width="1791" alt="Screenshot 2023-04-25 at 16 44 43" src="https://user-images.githubusercontent.com/118285718/234336246-a5a86c2e-a453-42a7-a443-2bb6b8f7c11e.png">
