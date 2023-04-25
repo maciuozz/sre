@@ -1,5 +1,35 @@
 # Practica SRE Paolo Scotto Di Mase
 Se han agregado 2 endpoints, 2 contadores y 2 pruebas unitarias que están señalizados de manera visible en el codigo.
+Observamos la ejecución de los 4 tests con el informe de cobertura de código:
+
+    venv) 21:33 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ pytest --cov
+    =============================================================== test session starts ================================================================
+    platform darwin -- Python 3.9.6, pytest-7.1.1, pluggy-1.0.0 -- /Users/paoloscotto/Desktop/SRE/venv/bin/python3
+    cachedir: .pytest_cache
+    rootdir: /Users/paoloscotto/Desktop/SRE, configfile: pytest.ini, testpaths: src/tests/
+    plugins: asyncio-0.18.3, anyio-3.6.2, cov-3.0.0
+    asyncio: mode=auto
+    collected 4 items
+
+    src/tests/app_test.py::TestSimpleServer::read_health_test PASSED                                                                             [ 25%]
+    src/tests/app_test.py::TestSimpleServer::read_main_test PASSED                                                                               [ 50%]
+    src/tests/app_test.py::TestSimpleServer::bye_bye_test PASSED                                                                                 [ 75%]
+    src/tests/app_test.py::TestSimpleServer::joke_endpoint_test PASSED                                                                           [100%]
+
+    ---------- coverage: platform darwin, python 3.9.6-final-0 -----------
+    Name                          Stmts   Miss Branch BrPart     Cover   Missing
+    ----------------------------------------------------------------------------
+    src/application/__init__.py       0      0      0      0   100.00%
+    src/application/app.py           44      5      4      1    87.50%   31, 35-37, 77
+    src/tests/__init__.py             0      0      0      0   100.00%
+    src/tests/app_test.py            32      0      2      0   100.00%
+    ----------------------------------------------------------------------------
+    TOTAL                            76      5      6      1    92.68%
+
+    Required test coverage of 80.0% reached. Total coverage: 92.68%
+
+    ================================================================ 4 passed in 1.69s =================================================================
+
 Se ha creado una pipeline mediante GitHub Actions que hace uso de 2 archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas. La fase de release se activa cuando se verifica un push de tag que comienza con la letra "v". Por otro lado, la fase de test se activa con push de código o pull requests (PR). He usado un repositorio privado en mi cuenta personal de GitHub en vez de usar la organización ***keepcodingclouddevops7*** como vimos durante las clases.
 El fichero ***release.yaml*** usa 3 ***repository secret***: ***GHCR_PAT***, ***DOCKERHUB_TOKEN*** y ***DOCKERHUB_USERNAME***.
 Para definir ***GHCR_PAT*** generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:  
