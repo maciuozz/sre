@@ -60,7 +60,7 @@ Para ver los pod en el namespace monitoring utilizado para desplegar el stack de
 
     kubectl -n monitoring get po -w
 
-Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081 utilizando helm:
+Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081 utilizando Helm:
 
     helm install my-release helm-chart-simple-server/ -n monitoring
 
