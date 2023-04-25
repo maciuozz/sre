@@ -49,6 +49,10 @@ A continuación hay algunas capturas de las fases de test y release:
 <img width="1791" alt="Screenshot 2023-04-26 at 00 00 35" src="https://user-images.githubusercontent.com/118285718/234414711-e3f166c5-d143-443d-be98-4c826e313be7.png">
 <img width="1792" alt="Screenshot 2023-04-26 at 00 01 04" src="https://user-images.githubusercontent.com/118285718/234414728-9dee4ee5-fb74-4db6-b55e-77ce499aebf4.png">
 
+Aqui se pueden observar las imagenes subidas a Docker Hub y a GitHub Container Registry:
+
+<img width="1790" alt="Screenshot 2023-04-26 at 00 08 08" src="https://user-images.githubusercontent.com/118285718/234415976-4f122de1-ba2d-4951-87e1-6137d9e656c3.png">
+<img width="1792" alt="Screenshot 2023-04-26 at 00 08 53" src="https://user-images.githubusercontent.com/118285718/234415987-b1940f14-07e9-42ab-875a-bc0de5f9ad15.png">
 
 Para desplegar Prometheus creamos un cluster de Kubernetes que utilice la versión v1.21.1 utilizando minikube para ello a través de un nuevo perfil llamado monitoring-demo:
 
