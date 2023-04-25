@@ -73,7 +73,11 @@ El output del comando anterior debería ser similar a:
     
 Como que hemos configurado prometheus para que nos envíe notificaciones a Slack si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos observar:
 
-<img width="1791" alt="Screenshot 2023-04-25 at 16 44 43" src="https://user-images.githubusercontent.com/118285718/234336246-a5a86c2e-a453-42a7-a443-2bb6b8f7c11e.png">
+<img width="1792" alt="Screenshot 2023-04-25 at 20 54 20" src="https://user-images.githubusercontent.com/118285718/234376318-b246d27a-9941-4d87-85a5-52d077ac5dc2.png">
+
+Aqui podemos observar el escalado/desescalado horizontal: 
+
+<img width="1365" alt="Screenshot 2023-04-25 at 20 52 08" src="https://user-images.githubusercontent.com/118285718/234376472-01ff841f-de1f-4efa-8bf2-808ff9c024c3.png">
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
