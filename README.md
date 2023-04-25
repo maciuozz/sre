@@ -72,8 +72,8 @@ Deberiamos obtener este output:
     STATUS: deployed
     REVISION: 1
     NOTES:
-    1. Get the application URL by running these commands:
-       kubectl port-forward service/my-release-simple-server 8081:8081
+    1. Get the application URL by run:
+       - kubectl port-forward service/my-release-simple-server 8081:8081
       
 Despues de ejecutar el ***port-forward*** mencionado en la sección ***NOTES*** del output anterior, comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
 
