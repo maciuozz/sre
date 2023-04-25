@@ -57,13 +57,9 @@ Realizamos una prueba de estrés utilizando [Vegeta](https://github.com/tsenart/
 
     echo "GET http://localhost:8081" | vegeta attack -rate=500 -duration=60s | vegeta report
 
-Obtener los logs del contenedor creado en el paso anterior:
+Como que hemos configurado prometheus para que nos envíe notificaciones a Slack si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos observar:
 
-    docker logs -f simple-server
-
-La ejecución del comando anterior debería mostrar algo como lo siguiente:
-
-    [2023-04-24 23:33:25 +0000] [1] [INFO] Running on http://0.0.0.0:8081 (CTRL + C to quit)
+<img width="1791" alt="Screenshot 2023-04-25 at 16 44 43" src="https://user-images.githubusercontent.com/118285718/234336246-a5a86c2e-a453-42a7-a443-2bb6b8f7c11e.png">
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
