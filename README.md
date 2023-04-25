@@ -67,7 +67,7 @@ Desplegar el chart kube-prometheus-stack del repositorio de helm añadido en el 
 
     helm -n monitoring upgrade --install prometheus prometheus-community/kube-prometheus-stack -f kube-prometheus-stack/values.yaml --create-namespace --wait --version 34.1.1
     
-Para ver los pod en el namespace monitoring utilizado para desplegar el stack de prometheus: 
+En el archivo ***values.yaml*** se establece la configuración para conectar Prometheus con Slack. Para ver los pod en el namespace monitoring utilizado para desplegar el stack de prometheus: 
 
     kubectl -n monitoring get po -w
 
@@ -110,7 +110,7 @@ El output del comando anterior debería ser similar a:
     Get "http://localhost:8081": dial tcp: lookup localhost: no such host
     Get "http://localhost:8081": dial tcp 0.0.0.0:0->[::1]:8081: socket: too many open files
     
-Como que hemos configurado prometheus para que nos envíe notificaciones a Slack si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos observar:
+Como que hemos configurado prometheus para que nos avise si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos recibir notificaciones en Slack:
 
 <img width="1792" alt="Screenshot 2023-04-25 at 20 54 20" src="https://user-images.githubusercontent.com/118285718/234376318-b246d27a-9941-4d87-85a5-52d077ac5dc2.png">
 
