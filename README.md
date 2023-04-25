@@ -77,9 +77,9 @@ Deberiamos obtener este output:
       
 Despues de ejecutar el ***port-forward*** mencionado en la sección ***NOTES*** del output anterior, comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
 
-<img width="1117" alt="Screenshot 2023-04-25 at 23 17 29" src="https://user-images.githubusercontent.com/118285718/234407791-52306d2f-5bd5-4e24-8d70-a9211073fbc1.png">
-<img width="1131" alt="Screenshot 2023-04-25 at 23 23 13" src="https://user-images.githubusercontent.com/118285718/234407820-dda83955-609b-48f7-a8d0-23ed4d9f0b24.png">
-
+<img width="1382" alt="Screenshot 2023-04-25 at 23 41 36" src="https://user-images.githubusercontent.com/118285718/234411323-c20acfc6-c5b2-44e1-86fd-f99ff771f6c9.png">
+<img width="1390" alt="Screenshot 2023-04-25 at 23 43 09" src="https://user-images.githubusercontent.com/118285718/234411385-83dab2a4-cdce-4ea9-b451-b12ef61b950b.png">
+<img width="1347" alt="Screenshot 2023-04-25 at 23 43 31" src="https://user-images.githubusercontent.com/118285718/234411439-b9b3d80f-21d4-4c81-bd3f-cc101bc014a0.png">
 
 Realizamos una prueba de estrés utilizando [Vegeta](https://github.com/tsenart/vegeta/releases). Podemos ejecutar este comando repetidas veces (el endpoint se puede cambiar: ***"/health", "/bye", "/joke")***:
 
