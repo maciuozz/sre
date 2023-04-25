@@ -77,10 +77,9 @@ Deberiamos obtener este output:
       
 Despues de ejecutar el ***port-forward*** mencionado en la sección ***NOTES*** del output anterior, comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
 
-<img width="1041" alt="Screenshot 2023-04-25 at 17 42 04" src="https://user-images.githubusercontent.com/118285718/234331009-4df67f90-ede7-4667-b85d-5fd2aadf70e8.png">
-<img width="941" alt="Screenshot 2023-04-25 at 17 40 29" src="https://user-images.githubusercontent.com/118285718/234331026-19f9d49a-285b-43eb-8448-3849f229e323.png">
-<img width="955" alt="Screenshot 2023-04-25 at 17 38 16" src="https://user-images.githubusercontent.com/118285718/234331164-ec9d1550-14d0-434b-8828-91d50fcab993.png">
-<img width="801" alt="Screenshot 2023-04-25 at 17 34 47" src="https://user-images.githubusercontent.com/118285718/234329056-5417df98-f439-41e3-ad49-c70b905f887e.png">
+<img width="1117" alt="Screenshot 2023-04-25 at 23 17 29" src="https://user-images.githubusercontent.com/118285718/234407791-52306d2f-5bd5-4e24-8d70-a9211073fbc1.png">
+<img width="1131" alt="Screenshot 2023-04-25 at 23 23 13" src="https://user-images.githubusercontent.com/118285718/234407820-dda83955-609b-48f7-a8d0-23ed4d9f0b24.png">
+
 
 Realizamos una prueba de estrés utilizando [Vegeta](https://github.com/tsenart/vegeta/releases). Podemos ejecutar este comando repetidas veces (el endpoint se puede cambiar: ***"/health", "/bye", "/joke")***:
 
