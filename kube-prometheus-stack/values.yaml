@@ -137,5 +137,5 @@ additionalPrometheusRulesMap:
               alertname: "CPU usage exceeded limit for simple-server container"
             annotations:
               summary: "CPU usage exceeded limit for simple-server container"
-              description: "The 'simple-server' container is using more CPU than the configured limit of {{ $value }}."
-              message: "The 'simple-server' container in pod {{ $labels.pod }} is using {{ printf \"%0.2f\" $value }}% CPU, which exceeds the configured limit of {{ $value }}%."
+              description: "The 'simple-server' container is using more CPU than the configured limit."
+              message: "The CPU usage of the 'simple-server' container in pod {{ $labels.pod }} has exceeded the limit set by the configuration."
