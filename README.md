@@ -28,11 +28,24 @@ Para ver los pod en el namespace monitoring utilizado para desplegar el stack de
 
     kubectl -n monitoring get po -w
 
-Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081. Creamos una imagen Docker con el código necesario 
-para arrancar el servidor:
+Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081 utilizando helm:
 
-    docker build -t simple-server:0.0.1 .
+    helm install my-release helm-chart-simple-server/ -n monitoring
 
+Deberiamos obtener este output:
+
+    NAME: my-release
+    LAST DEPLOYED: Tue Apr 25 16:24:40 2023
+    NAMESPACE: monitoring
+    STATUS: deployed
+    REVISION: 1
+    NOTES:
+    1. Get the application URL by running these commands:
+      export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=simple-server,app.kubernetes.io/instance=my-release" -o jsonpath="{.items[0].metadata.name}")
+      export CONTAINER_PORT=$(kubectl get pod --namespace monitoring $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+      echo "Visit http://127.0.0.1:8081 to use your application"
+      kubectl --namespace monitoring port-forward $POD_NAME 8081:$CONTAINER_PORT
+      
 Arrancamos la imagen construida en el paso anterior mapeando los puertos utilizados por el servidor de FastAPI y el cliente de prometheus:
 
     docker run -d -p 8000:8000 -p 8081:8081 --name simple-server simple-server:0.0.1
