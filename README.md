@@ -29,6 +29,8 @@ Observamos la ejecución de los 4 tests con el informe de cobertura de código:
     Required test coverage of 80.0% reached. Total coverage: 92.68%
 
     ================================================================ 4 passed in 1.69s =================================================================
+    
+<img width="1790" alt="Screenshot 2023-04-25 at 21 38 59" src="https://user-images.githubusercontent.com/118285718/234386277-b5564adc-950b-4157-a180-aebbb8e2f19d.png">
 
 Se ha creado una pipeline mediante GitHub Actions que hace uso de 2 archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas. La fase de release se activa cuando se verifica un push de tag que comienza con la letra "v". Por otro lado, la fase de test se activa con push de código o pull requests (PR). He usado un repositorio privado en mi cuenta personal de GitHub en vez de usar la organización ***keepcodingclouddevops7*** como vimos durante las clases.
 El fichero ***release.yaml*** usa 3 ***repository secret***: ***GHCR_PAT***, ***DOCKERHUB_TOKEN*** y ***DOCKERHUB_USERNAME***.
