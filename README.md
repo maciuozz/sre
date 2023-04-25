@@ -131,7 +131,7 @@ Para ver la salida de las métricas de Prometheus expuestas por la aplicación e
 
     kubectl -n monitoring port-forward service/my-release-simple-server 8000:8000
 
-Con http://localhost:8000/:
+Abriendo http://localhost:8000/ vemos:
 
     # HELP main_requests_total Total number of requests to main endpoint
     # TYPE main_requests_total counter
