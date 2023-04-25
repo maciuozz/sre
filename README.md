@@ -46,7 +46,7 @@ Deberiamos obtener este output:
       echo "Visit http://127.0.0.1:8081 to use your application"
       kubectl --namespace monitoring port-forward $POD_NAME 8081:$CONTAINER_PORT
       
-Realizamos una prueba de estress utilizando Vegeta. Podemos ejecutar este comando repetidas veces (el endpoint se puede cambiar: "/health", "/bye", "/joke"):
+Despues de ejecutar los 3 comandos del output (2 export y el port-forward) realizamos una prueba de estrés utilizando Vegeta. Podemos ejecutar este comando repetidas veces (el endpoint se puede cambiar: "/health", "/bye", "/joke"):
 
     echo "GET http://localhost:8081" | vegeta attack -rate=500 -duration=60s | vegeta report
 
