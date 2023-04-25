@@ -73,12 +73,9 @@ Deberiamos obtener este output:
     REVISION: 1
     NOTES:
     1. Get the application URL by running these commands:
-      export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=simple-server,app.kubernetes.io/instance=my-release" -o jsonpath="{.items[0].metadata.name}")
-      export CONTAINER_PORT=$(kubectl get pod --namespace monitoring $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
-      echo "Visit http://127.0.0.1:8081 to use your application"
-      kubectl --namespace monitoring port-forward $POD_NAME 8081:$CONTAINER_PORT
+      kubectl port-forward service/my-release-simple-server 8081:8081
       
-Despues de ejecutar los 3 comandos mencionados en la sección ***NOTES*** del output anterior (2 export y el port-forward) comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
+Despues de ejecutar el ***port-forward*** mencionado en la sección ***NOTES*** del output anterior, comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
 
 <img width="1041" alt="Screenshot 2023-04-25 at 17 42 04" src="https://user-images.githubusercontent.com/118285718/234331009-4df67f90-ede7-4667-b85d-5fd2aadf70e8.png">
 <img width="941" alt="Screenshot 2023-04-25 at 17 40 29" src="https://user-images.githubusercontent.com/118285718/234331026-19f9d49a-285b-43eb-8448-3849f229e323.png">
@@ -119,6 +116,22 @@ Aqui podemos observar el escalado/desescalado horizontal:
     my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
     my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
     my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
+
+Para ver la salida de las métricas de Prometheus expuestas por la aplicación ejecutamos: 
+
+    kubectl -n monitoring port-forward service/my-release-simple-server 8000:8000
+
+Con http://localhost:8000/:
+
+    # HELP main_requests_total Total number of requests to main endpoint
+    # TYPE main_requests_total counter
+    main_requests_total 172089.0
+    # HELP bye_requests_total Total number of requests to bye endpoint
+    # TYPE bye_requests_total counter
+    bye_requests_total 7082.0
+    # HELP joke_requests_total Total number of requests to joke endpoint
+    # TYPE joke_requests_total counter
+    joke_requests_total 15.0
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
