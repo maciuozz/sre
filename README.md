@@ -77,7 +77,16 @@ Como que hemos configurado prometheus para que nos envíe notificaciones a Slack
 
 Aqui podemos observar el escalado/desescalado horizontal: 
 
-<img width="1365" alt="Screenshot 2023-04-25 at 20 52 08" src="https://user-images.githubusercontent.com/118285718/234376472-01ff841f-de1f-4efa-8bf2-808ff9c024c3.png">
+   20:37 @/Users/paoloscotto ~ $ k get pod -n monitoring -w | grep simple
+    my-release-simple-server-7f89c4969b-ft57s                1/1     Running   0          13m
+    my-release-simple-server-7f89c4969b-htrf2                1/1     Running   0          13m
+    my-release-simple-server-7f89c4969b-ndnrv                1/1     Running   0          15m
+    my-release-simple-server-7f89c4969b-t4zbj                1/1     Running   0          13m
+    my-release-simple-server-7f89c4969b-t4zbj                1/1     Terminating   0          16m
+    my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
+    my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
+    my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
+    my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
