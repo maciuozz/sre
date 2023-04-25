@@ -71,8 +71,8 @@ En el archivo ***values.yaml*** se establece la configuración para conectar Pro
 
     kubectl -n monitoring get po -w
 
-Desplegamos nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 8081 en el mismo 
-namespace, utilizando Helm:
+Desplegamos en el mismo namespace nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 
+8081, utilizando Helm:
 
     helm install my-release helm-chart-simple-server/ -n monitoring
 
