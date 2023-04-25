@@ -130,7 +130,7 @@ additionalPrometheusRulesMap:
       - name: ruleset_1
         rules:
           - alert: simpleServerCPUUsageHigh
-            expr: avg(rate(container_cpu_usage_seconds_total{container="simple-server"}[2m])) by (pod) > avg(kube_pod_container_resource_requests{resource="cpu", container="simple-server"}) by (pod)
+            expr: avg(rate(container_cpu_usage_seconds_total{container="simple-server"}[1m])) by (pod) > avg(kube_pod_container_resource_requests{resource="cpu", container="simple-server"}) by (pod)
             for: 0m
             labels:
               severity: critical
