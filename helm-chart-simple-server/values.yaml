@@ -8,7 +8,7 @@ image:
   repository: maciuozz/kc7-sre-practica-final
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.5"
+  tag: "2.0.1"
 
 
 serviceAccount:

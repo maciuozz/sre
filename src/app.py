@@ -10,7 +10,7 @@ from application.app import SimpleServer
 
 class Container:
     """
-    Class Container configure necessary methods for launch application
+    Class Container configure necessary methods to launch the application
     """
 
     def __init__(self):

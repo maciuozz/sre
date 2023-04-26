@@ -15,10 +15,12 @@ HEALTHCHECK_REQUESTS = Counter('healthcheck_requests_total', 'Total number of re
 MAIN_ENDPOINT_REQUESTS = Counter('main_requests_total', 'Total number of requests to main endpoint')
 
 ############################################# ADDITIONAL COUNTERS ###################################################################
-#We create 2 counters for the 2 additional endpoints. The counters are used to collect metrics on the total number of requests received
-#by each of these endpoints.
+#We create 3 counters for the 2 additional endpoints and the other one to count the number of times the application has started. 
+# The endpoint counters are used to collect metrics on the total number of requests received by each of these endpoints.
 BYE_ENDPOINT_REQUESTS = Counter('bye_requests_total', 'Total number of requests to bye endpoint')
 JOKE_ENDPOINT_REQUESTS = Counter('joke_requests_total', 'Total number of requests to joke endpoint')
+APP_START_COUNT = Counter('app_start_count', 'Number of times the application has started')
+
 
 class SimpleServer:
     """
@@ -34,6 +36,8 @@ class SimpleServer:
         """Starts the server with the config parameters"""
         self._hypercorn_config.bind = ['0.0.0.0:8081']
         self._hypercorn_config.keep_alive_timeout = 90
+        #Keep count of the number of times the application has started.
+        APP_START_COUNT.inc()
         await serve(app, self._hypercorn_config)
 
     @app.get("/health")
@@ -78,3 +82,6 @@ class SimpleServer:
 
         joke = response.json()
         return {"setup": joke["setup"], "punchline": joke["punchline"]}
+    
+    
+
