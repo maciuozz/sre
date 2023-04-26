@@ -143,6 +143,12 @@ Abriendo http://localhost:8000/ vemos:
     # HELP joke_requests_total Total number of requests to joke endpoint
     # TYPE joke_requests_total counter
     joke_requests_total 15.0
+    # HELP healthcheck_requests_total Total number of requests to healthcheck
+    # TYPE healthcheck_requests_total counter
+    healthcheck_requests_total 17.0
+    # HELP app_start_count_total Number of times the application has started
+    # TYPE app_start_count_total counter
+    app_start_count_total 1.0
 
 Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto http-web del servicio de Grafana al puerto 3000 de la máquina:
 
