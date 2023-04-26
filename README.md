@@ -159,7 +159,7 @@ Abrir otra pestaña en la terminal y realizar un port-forward del servicio de Pr
     kubectl -n monitoring port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090
 
 Acceder a la dirección http://localhost:3000 en el navegador para acceder a Grafana, las credenciales por defecto son ***admin*** para el usuario y ***prom-operator*** para la contraseña. Acceder a la dirección http://localhost:9090 para acceder al Prometheus, por defecto no se necesita autenticación.
-Para acceder a nuestra aplicación usamos la dirección http://localhost:8081.
+
 
 
 
