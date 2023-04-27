@@ -2,11 +2,10 @@ FROM python:3.9.6-alpine3.14
 
 WORKDIR /service/app
 ADD ./src/ ./
-COPY src/requirements.txt ./
 
 RUN apk --no-cache add curl build-base npm
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r src/requirements.txt
 
 EXPOSE 8081
 
