@@ -17,7 +17,7 @@ REQUESTS = Counter('server_requests_total', 'Total number of requests to this we
 HEALTHCHECK_REQUESTS = Counter('healthcheck_requests_total', 'Total number of requests to healthcheck')
 MAIN_ENDPOINT_REQUESTS = Counter('main_requests_total', 'Total number of requests to main endpoint')
 
-####################### ADDITIONAL COUNTERS ###########################
+############################################### ADDITIONAL COUNTERS ################################################
 #We create 3 counters for the 2 additional endpoints and the other one to
 #count the number of times the application has started.
 #The endpoint counters are used to collect metrics on the total number of requests received by each of these endpoints.
@@ -62,7 +62,7 @@ class SimpleServer:
         MAIN_ENDPOINT_REQUESTS.inc()
         return {"msg": "Hello World"}
 
-##################### ADDITIONAL ENDPOINTS ########################
+#################################### ADDITIONAL ENDPOINTS #########################################
 
 #Endpoint that returns the message "Bye Bye".
     @staticmethod

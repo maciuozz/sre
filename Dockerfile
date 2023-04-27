@@ -5,7 +5,7 @@ ADD ./src/ ./
 
 RUN apk --no-cache add curl build-base npm
 RUN pip install --upgrade pip
-RUN pip install -r src/requirements.txt
+RUN pip install -r ./src/requirements.txt
 
 EXPOSE 8081
 
