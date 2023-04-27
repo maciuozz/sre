@@ -21,11 +21,11 @@ run: $(VENV)/bin/activate
 
 .PHONY: unit-test
 unit-test: $(VENV)/bin/activate
-	pytest
+	pytest src/tests
 
 .PHONY: unit-test-coverage
 unit-test-coverage: $(VENV)/bin/activate
-	pytest --cov
+	pytest --cov src/tests
 
 .PHONY: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
