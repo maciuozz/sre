@@ -3,9 +3,12 @@ Module used for testing simple server module
 """
 
 from fastapi.testclient import TestClient
-import pytest, httpx 
+import pytest
+import httpx
 
 from application.app import app
+
+
 
 client = TestClient(app)
 
@@ -29,10 +32,10 @@ class TestSimpleServer:
         assert response.status_code == 200
         assert response.json() == {"msg": "Hello World"}
 
-##################################################### ADDITIONAL TESTS ####################################################################
+############################## ADDITIONAL TESTS ################################
 
-#The 'bye_bye_test' function tests the '/bye' endpoint by making a GET request to it and checking that the HTTP status code is 200 
-#and the response JSON contains the message "Bye Bye".
+#The 'bye_bye_test' function tests the '/bye' endpoint by making a GET request
+#to it and checking that the HTTP status code is 200 and the response JSON contains the message "Bye Bye".
     @pytest.mark.asyncio
     async def bye_bye_test(self):
         """Tests the bye endpoint"""
@@ -41,13 +44,14 @@ class TestSimpleServer:
         assert response.status_code == 200
         assert response.json() == {"msg": "Bye Bye"}
 
-#The 'joke_endpoint_test' function tests the '/joke' endpoint by making an asynchronous GET request to it using the httpx.AsyncClient 
-#and checking that the HTTP status code is 200 and the response JSON contains the expected fields "setup" and "punchline", which are
-#both strings with a length greater than zero.
+#The 'joke_endpoint_test' function tests the '/joke' endpoint by making an asynchronous GET request to it
+#using the httpx.AsyncClient and checking that the HTTP status code is 200 and the response JSON contains
+#the expected fields "setup" and "punchline", which are both strings with a length greater than zero.
     @pytest.mark.asyncio
     async def joke_endpoint_test(self):
-        async with httpx.AsyncClient(app=app, base_url="http://test") as client:
-            response = await client.get("/joke")
+        """Tests the joke endpoint"""
+        async with httpx.AsyncClient(app=app, base_url="http://test") as async_client:
+            response = await async_client.get("/joke")
         assert response.status_code == 200
         data = response.json()
         assert "setup" in data

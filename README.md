@@ -1,3 +1,11 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Practica SRE Paolo Scotto Di Mase](#practica-sre-paolo-scotto-di-mase)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Practica SRE Paolo Scotto Di Mase
 Se han agregado 2 endpoints, 3 contadores y 2 pruebas unitarias que están señalizados de manera visible en el codigo.
 Observamos la ejecución de los 4 tests con el informe de cobertura de código:
@@ -29,12 +37,12 @@ Observamos la ejecución de los 4 tests con el informe de cobertura de código:
     Required test coverage of 80.0% reached. Total coverage: 92.68%
 
     ================================================================ 4 passed in 1.69s =================================================================
-    
+
 <img width="1790" alt="Screenshot 2023-04-25 at 21 38 59" src="https://user-images.githubusercontent.com/118285718/234386277-b5564adc-950b-4157-a180-aebbb8e2f19d.png">
 
 Se ha creado una pipeline mediante GitHub Actions que hace uso de 2 archivos, ***test.yaml*** y ***release.yaml***, los cuales representan 2 flujos de trabajo/workflow o fases distintas. La fase de release se activa cuando se verifica un push de tag que comienza con la letra "v". Por otro lado, la fase de test se activa con push de código o pull requests (PR). He usado un repositorio privado en mi cuenta personal de GitHub en vez de usar un repositorio dentro de la organización ***keepcodingclouddevops7*** como vimos durante las clases.
 El fichero ***release.yaml*** usa 3 ***repository secret***: ***GHCR_PAT***, ***DOCKERHUB_TOKEN*** y ***DOCKERHUB_USERNAME***.
-Para definir ***GHCR_PAT*** generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:  
+Para definir ***GHCR_PAT*** generamos un token en ***Settings*** --> ***Developer settings*** con estos permisos:
 
 <img width="1187" alt="Screenshot 2023-04-24 at 02 12 21" src="https://user-images.githubusercontent.com/118285718/233874655-ca1eb09a-7908-43d2-a032-f1ba8db3fbe3.png">
 
@@ -66,12 +74,12 @@ Añadir el repositorio de helm prometheus-community para poder desplegar el char
 Desplegar el chart kube-prometheus-stack del repositorio de helm añadido en el paso anterior con los valores configurados en el archivo kube-prometheus-stack/values.yaml en el namespace monitoring:
 
     helm -n monitoring upgrade --install prometheus prometheus-community/kube-prometheus-stack -f kube-prometheus-stack/values.yaml --create-namespace --wait --version 34.1.1
-    
-En el archivo ***values.yaml*** se establece la configuración para conectar Prometheus con Slack. Para ver los pod en el namespace monitoring utilizado para desplegar el stack de prometheus: 
+
+En el archivo ***values.yaml*** se establece la configuración para conectar Prometheus con Slack. Para ver los pod en el namespace monitoring utilizado para desplegar el stack de prometheus:
 
     kubectl -n monitoring get po -w
 
-Desplegamos en el mismo namespace nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto 
+Desplegamos en el mismo namespace nuestra aplicación que utiliza [FastAPI](https://fastapi.tiangolo.com/) para levantar un servidor en el puerto
 8081, utilizando Helm:
 
     helm install my-release helm-chart-simple-server/ -n monitoring
@@ -86,7 +94,7 @@ Deberiamos obtener este output:
     NOTES:
     1. Get the application URL by running:
        - kubectl port-forward service/my-release-simple-server 8081:8081
-      
+
 Despues de ejecutar el ***port-forward*** mencionado en la sección ***NOTES*** del output anterior, comprobamos que la aplicación funcione correctamente accediendo a ***"/joke"***:
 
 <img width="1382" alt="Screenshot 2023-04-25 at 23 41 36" src="https://user-images.githubusercontent.com/118285718/234411323-c20acfc6-c5b2-44e1-86fd-f99ff771f6c9.png">
@@ -110,12 +118,12 @@ El output del comando anterior debería ser similar a:
     Error Set:
     Get "http://localhost:8081": dial tcp: lookup localhost: no such host
     Get "http://localhost:8081": dial tcp 0.0.0.0:0->[::1]:8081: socket: too many open files
-    
+
 Como que hemos configurado prometheus para que nos avise si la tasa promedio de uso de CPU es mayor que la cantidad promedio de CPU solicitada por el contenedor, despues de unos minutos deberíamos recibir notificaciones en Slack:
 
 <img width="1792" alt="Screenshot 2023-04-25 at 20 54 20" src="https://user-images.githubusercontent.com/118285718/234376318-b246d27a-9941-4d87-85a5-52d077ac5dc2.png">
 
-Aqui podemos observar el escalado/desescalado horizontal: 
+Aqui podemos observar el escalado/desescalado horizontal:
 
     20:37 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ k get pod -n monitoring -w | grep simple
     my-release-simple-server-7f89c4969b-ft57s                1/1     Running   0          13m
@@ -128,7 +136,7 @@ Aqui podemos observar el escalado/desescalado horizontal:
     my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
     my-release-simple-server-7f89c4969b-t4zbj                0/1     Terminating   0          17m
 
-Para ver la salida de las métricas de Prometheus expuestas por la aplicación ejecutamos: 
+Para ver la salida de las métricas de Prometheus expuestas por la aplicación ejecutamos:
 
     kubectl -n monitoring port-forward service/my-release-simple-server 8000:8000
 
@@ -161,9 +169,3 @@ Abrir otra pestaña en la terminal y realizar un port-forward del servicio de Pr
 Acceder a la dirección http://localhost:3000 en el navegador para acceder a Grafana, las credenciales por defecto son ***admin*** para el usuario y ***prom-operator*** para la contraseña. Acceder a la dirección http://localhost:9090 para acceder al Prometheus, por defecto no se necesita autenticación.
 
 <img width="1791" alt="Screenshot 2023-04-26 at 05 35 01" src="https://user-images.githubusercontent.com/118285718/234465574-b1c68ee6-dd07-4b64-a551-50a60ea0694d.png">
-
-
-
-
-
-

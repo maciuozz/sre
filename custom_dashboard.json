@@ -473,7 +473,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"        
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "avg(kube_pod_container_resource_requests{namespace=\"$namespace\", resource=\"cpu\", pod=\"$pod\"}) by (pod)",

@@ -14,9 +14,10 @@ REQUESTS = Counter('server_requests_total', 'Total number of requests to this we
 HEALTHCHECK_REQUESTS = Counter('healthcheck_requests_total', 'Total number of requests to healthcheck')
 MAIN_ENDPOINT_REQUESTS = Counter('main_requests_total', 'Total number of requests to main endpoint')
 
-############################################# ADDITIONAL COUNTERS ###################################################################
-#We create 3 counters for the 2 additional endpoints and the other one to count the number of times the application has started. 
-# The endpoint counters are used to collect metrics on the total number of requests received by each of these endpoints.
+####################### ADDITIONAL COUNTERS ###########################
+#We create 3 counters for the 2 additional endpoints and the other one to
+#count the number of times the application has started.
+#The endpoint counters are used to collect metrics on the total number of requests received by each of these endpoints.
 BYE_ENDPOINT_REQUESTS = Counter('bye_requests_total', 'Total number of requests to bye endpoint')
 JOKE_ENDPOINT_REQUESTS = Counter('joke_requests_total', 'Total number of requests to joke endpoint')
 APP_START_COUNT = Counter('app_start_count', 'Number of times the application has started')
@@ -41,7 +42,7 @@ class SimpleServer:
         await serve(app, self._hypercorn_config)
 
     @app.get("/health")
-    async def health_check():
+    async def health_check(self):
         """Implement health check endpoint"""
         #Increase the counter used to record the overall number of requests made to the webserver.
         REQUESTS.inc()
@@ -50,26 +51,27 @@ class SimpleServer:
         return {"health": "ok"}
 
     @app.get("/")
-    async def read_main():
+    async def read_main(self):
         """Implement main endpoint"""
         REQUESTS.inc()
         MAIN_ENDPOINT_REQUESTS.inc()
-        return {"msg": "Hello World"} 
+        return {"msg": "Hello World"}
 
-################################################## ADDITIONAL ENDPOINTS ################################################################
+##################### ADDITIONAL ENDPOINTS ######################
 
 #Endpoint that returns the message "Bye Bye".
     @app.get("/bye")
-    async def say_bye():
+    async def say_bye(self):
         """Implement bye endpoint"""
         REQUESTS.inc()
         BYE_ENDPOINT_REQUESTS.inc()
         return {"msg": "Bye Bye"}
 
-#Endpoint that uses the 'requests' library to get a random joke from an external API. If the request to get the joke is unsuccessful, the
+#Endpoint that uses the 'requests' library to get a random joke from an external API.
+#If the request to get the joke is unsuccessful, the
 #function returns an error message. If it is successful, it returns the joke in JSON format.
     @app.get("/joke")
-    async def tell_joke():
+    async def tell_joke(self):
         """Tell a joke"""
         REQUESTS.inc()
         JOKE_ENDPOINT_REQUESTS.inc()
@@ -82,6 +84,3 @@ class SimpleServer:
 
         joke = response.json()
         return {"setup": joke["setup"], "punchline": joke["punchline"]}
-    
-    
-

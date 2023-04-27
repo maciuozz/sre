@@ -13,7 +13,7 @@ permissions:
   packages: write
   issues: read
   pull-requests: read
-    
+
 jobs:
   semantic-release:
     if: "${{ github.event.workflow_run.conclusion == 'success' && !contains(github.event.commits[0].message, 'chore(release):') }}"
@@ -85,7 +85,7 @@ jobs:
         id: get_version
         run: |
           echo VERSION=$(cat semantic_release_version.txt) >> $GITHUB_ENV
-          
+
       - name: Build and push Docker image
         if: ${{ env.VERSION != '' }}
         run: make publish

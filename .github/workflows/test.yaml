@@ -32,7 +32,7 @@ jobs:
 
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
-        
+
       - name: Install httpx
         run: pip3 install httpx
 
