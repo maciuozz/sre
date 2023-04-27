@@ -1,5 +1,8 @@
 """
-Module define fastapi server configuration
+This module  defines a FastAPI application with 4 endpoints. The FastAPI() function is called to create
+a new instance of the FastAPI application. The SimpleServer class is defined with a run_server() method that
+uses the Hypercorn 'serve' function to start the server with the specified configuration parameters.
+Hypercorn server is being used to serve the FastAPI application that listens on port 8081.
 """
 
 from fastapi import FastAPI
@@ -50,6 +53,7 @@ class SimpleServer:
         #Increase the counter used to record the requests made to the health check endpoint.
         HEALTHCHECK_REQUESTS.inc()
         return {"health": "ok"}
+
     @staticmethod
     @app.get("/")
     async def read_main():

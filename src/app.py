@@ -1,5 +1,10 @@
+
 """
-Module for launch application
+Module that launches an application that uses the Prometheus monitoring system to expose metrics over HTTP.
+The module defines a Container class with a start_server() method that starts the application server.
+The start_server() method launches an instance of the SimpleServer class defined in a module called app,
+which contains the application code. In the if __name__ == "__main__": block, the start_http_server() function
+from the prometheus_client module is called with an argument of 8000, which starts a Prometheus metrics endpoint on port 8000.
 """
 
 import asyncio

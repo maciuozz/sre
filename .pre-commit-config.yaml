@@ -27,7 +27,7 @@ repos:
         files: src
         args:
           [
-            "--max-line-length=120",
+            "--max-line-length=180",
             "--disable=protected-access,no-self-use,too-few-public-methods,no-name-in-module",
             "-rn"
           ]
