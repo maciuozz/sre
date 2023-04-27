@@ -41,17 +41,18 @@ class SimpleServer:
         APP_START_COUNT.inc()
         await serve(app, self._hypercorn_config)
 
+    @staticmethod
     @app.get("/health")
-    async def health_check(self):
+    async def health_check():
         """Implement health check endpoint"""
         #Increase the counter used to record the overall number of requests made to the webserver.
         REQUESTS.inc()
         #Increase the counter used to record the requests made to the health check endpoint.
         HEALTHCHECK_REQUESTS.inc()
         return {"health": "ok"}
-
+    @staticmethod
     @app.get("/")
-    async def read_main(self):
+    async def read_main():
         """Implement main endpoint"""
         REQUESTS.inc()
         MAIN_ENDPOINT_REQUESTS.inc()
@@ -60,8 +61,9 @@ class SimpleServer:
 ##################### ADDITIONAL ENDPOINTS ######################
 
 #Endpoint that returns the message "Bye Bye".
+    @staticmethod
     @app.get("/bye")
-    async def say_bye(self):
+    async def say_bye():
         """Implement bye endpoint"""
         REQUESTS.inc()
         BYE_ENDPOINT_REQUESTS.inc()
@@ -70,8 +72,9 @@ class SimpleServer:
 #Endpoint that uses the 'requests' library to get a random joke from an external API.
 #If the request to get the joke is unsuccessful, the
 #function returns an error message. If it is successful, it returns the joke in JSON format.
+    @staticmethod
     @app.get("/joke")
-    async def tell_joke(self):
+    async def tell_joke():
         """Tell a joke"""
         REQUESTS.inc()
         JOKE_ENDPOINT_REQUESTS.inc()
