@@ -5,7 +5,6 @@ PIP		= $(VENV)/bin/pip
 # Variables used to configure
 IMAGE_REGISTRY_DOCKERHUB 	?= maciuozz
 IMAGE_REGISTRY_GHCR		?= ghcr.io
-IMAGE_REPO			=  sre
 IMAGE_NAME			?= kc7-sre-practica-final
 VERSION				?= develop
 
@@ -21,11 +20,11 @@ run: $(VENV)/bin/activate
 
 .PHONY: unit-test
 unit-test: $(VENV)/bin/activate
-	pytest src/tests
+	pytest src
 
 .PHONY: unit-test-coverage
 unit-test-coverage: $(VENV)/bin/activate
-	pytest --cov src/tests
+	pytest --cov src
 
 .PHONY: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
