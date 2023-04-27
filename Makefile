@@ -27,9 +27,9 @@ unit-test-coverage: $(VENV)/bin/activate
 	pytest --cov src
 
 .PHONY: $(VENV)/bin/activate
-$(VENV)/bin/activate: requirements.txt
+$(VENV)/bin/activate: src/requirements.txt
 	python3.9 -m venv $(VENV)
-	$(PIP) install -r requirements.txt
+	$(PIP) install -r src/requirements.txt
 
 .PHONY: docker-build
 docker-build: ## Build image
