@@ -69,7 +69,7 @@ El output:
     Mixed line ending........................................................Passed
     Add TOC for md files.....................................................Passed
     pylint...................................................................Passed
-    
+
 A continuación hay algunas capturas de las varias fases de la pipeline:
 
 <img width="1789" alt="Screenshot 2023-04-26 at 00 00 05" src="https://user-images.githubusercontent.com/118285718/234414697-e3255e4c-5a39-461b-9d0f-4226f08cae51.png">

@@ -32,7 +32,7 @@ class TestSimpleServer:
         assert response.status_code == 200
         assert response.json() == {"msg": "Hello World"}
 
-############################## ADDITIONAL TESTS ################################
+######################################## ADDITIONAL TESTS ##########################################
 
 #The 'bye_bye_test' function tests the '/bye' endpoint by making a GET request
 #to it and checking that the HTTP status code is 200 and the response JSON contains the message "Bye Bye".
