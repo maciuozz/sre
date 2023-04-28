@@ -60,7 +60,17 @@ Para hacer pre-commit:
     pip3 install -r src/requirements.txt
     pre-commit run -a
 
-A continuación hay algunas capturas de las fases de test y release:
+El output:
+
+    (venv) 3:44 @/Users/paoloscotto/desktop/sre ~ (git)-[main] $ pre-commit run -a
+    Trim Trailing Whitespace.................................................Passed
+    Fix End of Files.........................................................Passed
+    Check for merge conflicts................................................Passed
+    Mixed line ending........................................................Passed
+    Add TOC for md files.....................................................Passed
+    pylint...................................................................Passed
+    
+A continuación hay algunas capturas de las varias fases de la pipeline:
 
 <img width="1789" alt="Screenshot 2023-04-26 at 00 00 05" src="https://user-images.githubusercontent.com/118285718/234414697-e3255e4c-5a39-461b-9d0f-4226f08cae51.png">
 <img width="1791" alt="Screenshot 2023-04-26 at 00 00 35" src="https://user-images.githubusercontent.com/118285718/234414711-e3f166c5-d143-443d-be98-4c826e313be7.png">
