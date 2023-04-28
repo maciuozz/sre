@@ -188,14 +188,9 @@ Abrir una nueva pestaña en la terminal y realizar un port-forward del puerto ht
 
     kubectl -n monitoring port-forward svc/prometheus-grafana 3000:http-web
 
-Abrir otra pestaña en la terminal y realizar un port-forward del servicio de Prometheus al puerto 9090 de la máquina:
+Acceder a la dirección http://localhost:3000. Las credenciales de Grafana por defecto son ***admin*** para el usuario y ***prom-operator*** para la contraseña. Hacemos un import del fichero ***custom_dashboard.json***, seleccionamos el namespace ***monitoring*** y uno de los pods de la aplicación FastAPI. Se pueden observar 7 paneles:
 
-    kubectl -n monitoring port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090
-
-Acceder a la dirección http://localhost:3000 en el navegador para acceder a Grafana, las credenciales por defecto son ***admin*** para el usuario y ***prom-operator*** para la contraseña. Hacemos un import del fichero ***custom_dashboard.json***, seleccionamos el namespace ***monitoring*** y uno de los pods de la aplicación FastAPI. Se pueden observar 7 paneles:
-
-
-* paneles dedicados a los endpoints, los cuales registran el número de llamadas recibidas por cada uno de ellos.
+* 4 paneles dedicados a los endpoints, los cuales registran el número de llamadas recibidas por cada uno de ellos.
 * 1 panel que cuenta el número de veces que la aplicación ha sido iniciada.
 * 1 panel que muestra el número total de llamadas realizadas.
 * 1 panel que presenta el uso de la CPU en comparación con la solicitud de la misma.
