@@ -193,6 +193,6 @@ Acceder a la dirección http://localhost:3000. Las credenciales de Grafana por d
 * 4 paneles dedicados a los endpoints, los cuales registran el número de llamadas recibidas por cada uno de ellos.
 * 1 panel que cuenta el número de veces que la aplicación ha sido iniciada.
 * 1 panel que muestra el número total de llamadas realizadas.
-* 1 panel que presenta el uso de la CPU en comparación con la solicitud de la misma.
+* 1 panel que muestra el uso actual de CPU en comparación con la cantidad máxima solicitada.
 
 <img width="1791" alt="Screenshot 2023-04-26 at 05 35 01" src="https://user-images.githubusercontent.com/118285718/234465574-b1c68ee6-dd07-4b64-a551-50a60ea0694d.png">
