@@ -70,11 +70,18 @@ El output:
     Add TOC for md files.....................................................Passed
     pylint...................................................................Passed
 
+La sintaxis necesaria para realizar un commit es:
+
+    git commit -m "fix(app): updated code
+
 A continuación hay algunas capturas de las varias fases de la pipeline:
 
-<img width="1789" alt="Screenshot 2023-04-26 at 00 00 05" src="https://user-images.githubusercontent.com/118285718/234414697-e3255e4c-5a39-461b-9d0f-4226f08cae51.png">
-<img width="1791" alt="Screenshot 2023-04-26 at 00 00 35" src="https://user-images.githubusercontent.com/118285718/234414711-e3f166c5-d143-443d-be98-4c826e313be7.png">
-<img width="1792" alt="Screenshot 2023-04-26 at 00 01 04" src="https://user-images.githubusercontent.com/118285718/234414728-9dee4ee5-fb74-4db6-b55e-77ce499aebf4.png">
+<img width="1790" alt="Screenshot 2023-04-28 at 04 05 26" src="https://user-images.githubusercontent.com/118285718/235037266-75250ea4-4eeb-4b7a-bd5b-02625244a258.png">
+<img width="1790" alt="Screenshot 2023-04-28 at 04 05 58" src="https://user-images.githubusercontent.com/118285718/235037372-1f2e2299-b3a6-4de5-8d75-ef6d947e2c62.png">
+<img width="1789" alt="Screenshot 2023-04-28 at 04 06 27" src="https://user-images.githubusercontent.com/118285718/235037390-92dfa077-d7d1-4175-897b-c3cacbca88e2.png">
+<img width="1791" alt="Screenshot 2023-04-28 at 04 07 13" src="https://user-images.githubusercontent.com/118285718/235037407-9fbfc09f-2bb7-4648-8853-ccaa224917ed.png">
+
+
 
 Aqui se pueden observar las imagenes subidas a GitHub Container Registry y a Docker Hub:
 
