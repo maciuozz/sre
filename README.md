@@ -51,6 +51,15 @@ Dentro del repositorio generamos un secret, ***GHCR_PAT***, en ***Settings*** --
 
 <img width="1224" alt="Screenshot 2023-04-24 at 02 24 56" src="https://user-images.githubusercontent.com/118285718/233875331-b1faa951-b2cb-40e8-a741-0ac7ccf365ff.png">
 
+Para hacer pre-commit:
+
+    pip3 install pre-commit
+    pre-commit install
+    python3 -m venv venv
+    source venv/bin/activate
+    pip3 install -r src/requirements.txt
+    pre-commit run -a
+
 A continuación hay algunas capturas de las fases de test y release:
 
 <img width="1789" alt="Screenshot 2023-04-26 at 00 00 05" src="https://user-images.githubusercontent.com/118285718/234414697-e3255e4c-5a39-461b-9d0f-4226f08cae51.png">
