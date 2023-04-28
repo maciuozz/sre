@@ -72,7 +72,7 @@ El output:
 
 La sintaxis necesaria para realizar un commit es:
 
-    git commit -m "fix(app): updated code
+    git commit -m "fix(app): updated code"
 
 A continuación hay algunas capturas de las varias fases de la pipeline:
 
