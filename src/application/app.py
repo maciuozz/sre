@@ -62,7 +62,7 @@ class SimpleServer:
         MAIN_ENDPOINT_REQUESTS.inc()
         return {"msg": "Hello World"}
 
-#################################### ADDITIONAL ENDPOINTS #########################################
+###################################### ADDITIONAL ENDPOINTS #########################################
 
 #Endpoint that returns the message "Bye Bye".
     @staticmethod
