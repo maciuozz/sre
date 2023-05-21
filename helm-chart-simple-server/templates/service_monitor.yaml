@@ -1,4 +1,8 @@
-{{- if and .Values.metrics.enabled -}}
+#The ServiceMonitor object is a Kubernetes custom resource definition (CRD) provided by the Prometheus Operator. 
+#When you create a ServiceMonitor object for your application, you are telling the Prometheus Operator to automatically
+#discover your application's metrics endpoint, and to scrape metrics from that endpoint at a regular interval.
+
+{{ if and .Values.metrics.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
